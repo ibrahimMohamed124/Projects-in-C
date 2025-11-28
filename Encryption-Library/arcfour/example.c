@@ -1,59 +1,32 @@
-/* example.c */
+#include <stdio.h>
+#include <arcfour.h>
 
-#include "arcfour.h"
-#define F fflush(stdout)
+int main() {
+    char *key = "mykey";
+    char *data = "Hello from arcfour library!";
+    int16 key_len = strlen(key);
+    int16 data_len = strlen(data);
 
-int main(void);
+    // Initialize arcfour
+    Arcfour *cipher = rc4init((int8*)key, key_len);
 
-// ef20 ac12
+    // Encrypt
+    int8 *enc = rc4encrypt(cipher, (int8*)data, data_len);
 
-void printbin(int8 *input,const int16 size){
-    int16 i;
-    int8 *p;
-
-    assert(size > 0);
-
-    for(i=size, p=input; i;i--, p++){
-        if(!(i % 2))
-            printf(" ");
-        printf("%.02x", *p);
-    }
-
+    printf("Encrypted: ");
+    for(int i=0; i<data_len; i++)
+        printf("%.02x ", enc[i]);
     printf("\n");
 
-    return;
+    // Decrypt
+    Arcfour *dec_cipher = rc4init((int8*)key, key_len);
+    int8 *dec = rc4encrypt(dec_cipher, enc, data_len);
+    printf("Decrypted: %s\n", dec);
 
-
-}
-
-
-int main(){
-    // Arcfour *rc4;
-    int16 skey, stext;
-
-    char *key, *from, *encrypted, *decrypted;
-
-    key=from=encrypted=decrypted;
-    from=key;
-
-    skey=stext=0;
-
-
-
-    key = "tomatoes";
-    skey = strlen(key);
-    from = "ibrahim mohamed talaat mohamed basiouny";
-    stext = strlen(from);
-
-    printf("initializing encryption...");
-    // rc4 = rc4init(key, skey);
-    printf("done\n");
-
-    printf("'%s'\n ->", from);
-    // encrypted = rc4encrypt(from, stext);
-    printbin((int8 *)key, skey);
+    free(cipher);
+    free(dec_cipher);
+    free(enc);
+    free(dec);
 
     return 0;
-
-
 }

@@ -1,0 +1,3 @@
+run this command to link lib to your project:
+
+gcc main.c -larcfour -o myproject
