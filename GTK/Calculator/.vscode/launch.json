@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/ibrah/OneDrive/Desktop/C Projects/GTK",
-      "program": "c:/Users/ibrah/OneDrive/Desktop/C Projects/GTK/build/Debug/outDebug",
+      "cwd": "c:/Users/ibrah/OneDrive/Desktop/C Projects/C-Projects/GTK/Calculator",
+      "program": "c:/Users/ibrah/OneDrive/Desktop/C Projects/C-Projects/GTK/Calculator/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
