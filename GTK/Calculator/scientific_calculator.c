@@ -413,7 +413,7 @@ void create_scientific_page() {
     }
 }
 
-// Create the calculator UI
+//============================ Create the calculator UI ============================
 void create_calculator() {
     // Create main window
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
